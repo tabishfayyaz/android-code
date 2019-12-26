@@ -1,3 +1,3 @@
-**RxDemo1** - Basics of RxJava and Operators written in Kotlin
-
-**ToDoListApp** - Basic Integration of RxJava and RxBinding into an existing Project written in Java
+- **RxDemo1** - Basics of RxJava and Operators written in Kotlin
+- **ToDoListApp** - Basic Integration of RxJava and RxBinding into an existing Project written in Java
+- **PostApp** - Simple POST made via Retrofit written in Kotlin
