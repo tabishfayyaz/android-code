@@ -11,4 +11,13 @@
 #### Dynamic String Resource
 ```
 <string name="time_in_seconds">%1$ds ago</string> 
+
+//use xliff tag to mark non-translatable portion
+<string name="promo_message">
+    Please use the "<xliff:g id="promotion_code">ABCDEFG</xliff:g>" to get a discount.
+</string>
+
+<string name="countdown">
+  <xliff:g id="time" example="5 days">%1$s</xliff:g> until holiday
+</string>
 ```
