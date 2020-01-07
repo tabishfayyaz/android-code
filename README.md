@@ -23,6 +23,7 @@
 </string>
 ```
 
+#### ImageView Scaletype
 ![imageview scaletype](https://github.com/tabishfayyaz/android-code/raw/master/images/scaletype.png)
 
 #### Change button text color on press state 
@@ -48,8 +49,6 @@ android:textColor="@color/custom_btn_text"
 </resources>
 ```
 
-#### Time conversions (days, minutes, seconds, milliseconds)
-http://stackoverflow.com/a/24285615/550393
-
-#### Color transparency
-https://stackoverflow.com/a/17239853
+## Links
+- Time conversions (days, minutes, seconds, milliseconds): http://stackoverflow.com/a/24285615/550393
+- Color transparency: https://stackoverflow.com/a/17239853
