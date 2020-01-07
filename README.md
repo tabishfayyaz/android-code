@@ -22,3 +22,32 @@
   <xliff:g id="time" example="5 days">%1$s</xliff:g> until holiday
 </string>
 ```
+
+#### Change button text color on press state 
+```
+//button would have following property for
+android:textColor="@color/custom_btn_text"
+
+//xml file referenced in above line under res/color folder
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+   <item android:color="#E6E6E6" android:state_pressed="true"/>
+   <item android:color="@android:color/white"/>
+</selector>
+```
+
+#### Declare integers e.g. # of gridview column or layout weight for different resolutions/dimensions 
+```
+//inside values/integers.xml
+<resources>
+   <integer name="grid_columns">1</integer>
+   <item name="left_weight" format="float" type="integer">0.35</item>
+   <item name="right_weight" format="float" type="integer">0.65</item>
+</resources>
+```
+
+#### Time conversions (days, minutes, seconds, milliseconds)
+http://stackoverflow.com/a/24285615/550393
+
+#### Color transparency
+https://stackoverflow.com/a/17239853
