@@ -23,6 +23,8 @@
 </string>
 ```
 
+![imageview scaletype](https://github.com/tabishfayyaz/android-code/raw/master/images/scaletype.png)
+
 #### Change button text color on press state 
 ```
 //button would have following property for
