@@ -9,6 +9,23 @@
 
 ## Code Snippets
 
+#### Size (width/height) or coordinates of a view are ready
+```
+final SeekBar seekBar = (SeekBar)findViewById(R.id.view_feelings_seekbar);
+ViewTreeObserver viewTreeObserver = seekBar.getViewTreeObserver();
+if (viewTreeObserver.isAlive())
+{
+viewTreeObserver.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+                @Override
+                public void onGlobalLayout() {
+                    seekBar.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                    Log.d(TAG, "seek bar width: " + seekBar.getWidth());
+                    Log.d(TAG, "seek bar width: " + seekBar.getX());
+                }
+});
+}
+```
+
 #### Dynamic String Resource
 ```
 <string name="time_in_seconds">%1$ds ago</string> 
@@ -51,7 +68,7 @@ mTabTitles = getResources().obtainTypedArray(R.array.support_tabs);
 </string-array>
 ```
 
-#### shape drawable for rounded corner rectangle at one edge
+#### Shape drawable for rounded corner rectangle at one edge
 ```
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
