@@ -24,6 +24,7 @@
 ```
 
 #### Integer arrays from xml file
+```
 int[] levelValues = new int[3];
 levelValues = getResources().getIntArray(R.array.level_easy);
 
@@ -35,8 +36,10 @@ levelValues = getResources().getIntArray(R.array.level_easy);
         <item>500</item>
     </integer-array>
 </resources>
+```
 
 #### String arrays from xml file
+```
 TypedArray mTabTitles;
 mTabTitles = getResources().obtainTypedArray(R.array.support_tabs);
 
@@ -46,6 +49,7 @@ mTabTitles = getResources().obtainTypedArray(R.array.support_tabs);
    <item>Offer History</item>
    <item>Support</item>
 </string-array>
+```
 
 #### shape drawable for rounded corner rectangle at one edge
 ```
