@@ -23,6 +23,41 @@
 </string>
 ```
 
+#### Integer arrays from xml file
+int[] levelValues = new int[3];
+levelValues = getResources().getIntArray(R.array.level_easy);
+
+//inside values/difficulty_level.xml:
+<resources>
+    <integer-array name="level_easy">
+        <item>180</item>
+        <item>315</item>
+        <item>500</item>
+    </integer-array>
+</resources>
+
+#### String arrays from xml file
+TypedArray mTabTitles;
+mTabTitles = getResources().obtainTypedArray(R.array.support_tabs);
+
+//inside values/lists.xml:
+<string-array name="support_tabs">
+   <item>FAQ</item>
+   <item>Offer History</item>
+   <item>Support</item>
+</string-array>
+
+#### shape drawable for rounded corner rectangle at one edge
+```
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+   android:shape="rectangle">
+   <solid android:color="@color/save_color"/>
+   <corners android:topRightRadius="6dp"
+       android:bottomRightRadius="6dp"/>
+</shape>
+```
+
 #### ImageView Scaletype
 ![imageview scaletype](https://github.com/tabishfayyaz/android-code/raw/master/images/scaletype.png)
 
