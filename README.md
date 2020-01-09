@@ -9,7 +9,33 @@
 
 ## Code Snippets
 
+#### Prevent touch theft by parent from child view
+```
+public static void disableTouchTheft(View childView) {
+    childView.setOnTouchListener(new View.OnTouchListener() {
+        @Override
+        public boolean onTouch(View view, MotionEvent motionEvent) {
+            childView.getParent().requestDisallowInterceptTouchEvent(true);
+            switch (motionEvent.getAction() & MotionEvent.ACTION_MASK) {
+            case MotionEvent.ACTION_UP:
+                childView.getParent().requestDisallowInterceptTouchEvent(false);
+                break;
+            }
+            return false;
+        }
+    });
+}
+```
 
+#### To prevent viewpager from receiving touch
+```
+mViewPager.setOnTouchListener(new View.OnTouchListener(){
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                return true;
+            }
+        });
+```
 
 #### Dropdown or spinner in a view
 ```
