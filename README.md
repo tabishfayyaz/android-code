@@ -250,9 +250,11 @@ public class com.packagename.InputPaperView extends RelativeLayout
 ```
 
 #### Android animation durations
+```
 getResources().getInteger(android.R.integer.config_longAnimTime)
 getResources().getInteger(android.R.integer.config_mediumAnimTime)
 getResources().getInteger(android.R.integer.config_shortAnimTime)
+```
 
 #### Custom sub classed handler
 ```
