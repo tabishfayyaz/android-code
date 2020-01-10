@@ -82,7 +82,33 @@ public class FPSListView extends ListView
 ```
 
 #### Specify white color with alpha
-<color name="white_with_transparency">#80ffffff</color>
+`<color name="white_with_transparency">#80ffffff</color>`
+
+#### Set html text
+```
+stepBText.setText(Html.fromHtml("Waiting...<br>Handshaking with the server"));
+
+OR
+
+<string name="allow_location_access">Allow &lt;b&gt;Cat Widget&lt;/b&gt; to access this device\'s location?</string>
+allowLocationText.setText(Html.fromHtml(getString(R.string.allow_location_access)));
+```
+
+#### Open external app if installed on device otherwise open from play store
+```
+@param packageName e.g. com.concur.breeze (can be seen in an app play-store url)
+private void launchApp(String packageName)
+{
+        Intent launchIntent = getPackageManager().getLaunchIntentForPackage(packageName);
+        if (launchIntent != null) {
+            startActivity(launchIntent);
+        }
+        else
+        {
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse( "http://play.google.com/store/apps/details?id=" + packageName)));
+        }
+}
+```
 
 #### Prevent touch theft by parent from child view
 ```
