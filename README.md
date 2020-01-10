@@ -6,6 +6,7 @@
 - **TMDBClientRx** - Simple Popular Movies Display Grid using Retrofit and RxJava written in Kotlin
 - **UnitTestingAndroidCourse** - Fundamentals of JUnit, Mockito and Android JUnit testing written in Java
 - **CustomView** - Simple XML based custom view with styleable attributes written in Kotlin
+- **ContactManager** - Demo of Room integration written in Java
 
 ## Code Snippets
 
