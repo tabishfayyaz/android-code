@@ -11,6 +11,79 @@
 
 ## Code Snippets
 
+#### To highlight, color or bold a substring in textview
+```
+highlightColor = Color.rgb(54, 173, 72);
+SpannableString spannedString = new SpannableString(“This is a demo string”);
+spannedString.setSpan(new BackgroundColorSpan(highlightColor), startIndex, startIndex+lookupText.length(), 0);
+spannedString.setSpan(new ForegroundColorSpan(Color.WHITE), startIndex, startIndex+lookupText.length(), 0);
+spannedString.setSpan(new StyleSpan(android.graphics.Typeface.BOLD), startIndex, startIndex+lookupText.length(), 0);
+textView.setText(spannedString);
+```
+
+#### Send broadcast
+```
+Intent intent = new Intent(appContext, SessionStateReceiver.class);
+intent.setAction(“SESSION_BROADCAST_ACTION”);
+intent.putExtra(“MESSAGE”, SESSION_EXPIRED_MESSAGE);
+context.sendBroadcast(intent);
+
+Bundle extras = intent.getExtras();
+String message = (String)extras.get(“MESSAGE”);
+```
+
+#### If ListView item click listener does not work after adding button
+```
+<Button  
+android:id="@+id/list_item_button3"                       
+            	android:onClick="onButtonClick"
+            	android:focusable="false"
+android:focusableInTouchMode="false"
+/>
+```
+
+#### To see performance of a listview by printing its frames per second
+```
+/**
+ * A utility custom list view that print frames per second while scrolling. The ideal frame rate should be 60 if its being shown too less 
+ * then something is not right in the UI 
+ */
+public class FPSListView extends ListView
+{
+	private Toast fpsToast;b
+	private long currentTime;
+	private long prevTime;
+
+	public FPSListView(Context context)
+	{
+		super(context);
+		fpsToast = Toast.makeText(context, "", Toast.LENGTH_SHORT);
+	}
+
+	public FPSListView(Context context, AttributeSet attrs)
+	{
+		super(context, attrs);
+		fpsToast = Toast.makeText(context, "", Toast.LENGTH_SHORT);
+	}
+
+	@Override
+	protected void onDraw(Canvas canvas)
+	{
+		super.onDraw(canvas);
+
+		currentTime = SystemClock.currentThreadTimeMillis();
+		long deltaTime = currentTime - prevTime;
+		long fps = 1000 / deltaTime;
+		fpsToast.setText("FPS: " + fps);
+		fpsToast.show();
+		prevTime = currentTime;
+	}
+}
+```
+
+#### Specify white color with alpha
+<color name="white_with_transparency">#80ffffff</color>
+
 #### Prevent touch theft by parent from child view
 ```
 public static void disableTouchTheft(View childView) {
