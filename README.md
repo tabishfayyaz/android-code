@@ -7,6 +7,7 @@
 - **UnitTestingAndroidCourse** - Fundamentals of JUnit, Mockito and Android JUnit testing written in Java
 - **CustomView** - Simple XML based custom view with styleable attributes written in Kotlin
 - **ContactManager** - Demo of Room integration written in Java
+- **ContactManagerRx** - Demo of Room integration using RxJava written in Java
 
 ## Code Snippets
 
