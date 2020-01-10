@@ -243,6 +243,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void createContact(final String name, final String email) {
 
+        //operations like create, update & delete are either going to complete or not so they can be interfaced using Completable
         disposable.add(
                 Completable.fromAction(new Action() {
                     @Override
