@@ -11,6 +11,53 @@
 
 ## Code Snippets
 
+#### Set a launcher activity in androidmanifest with no title
+```
+<activity
+            android:name="co.tabish.fayyaz.swipedeletelistviewdemo.app.MainActivity"
+            android:label="@string/title_activity_main"
+            android:theme="@style/WithoutTitle">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+</activity>
+
+//inside values/style.xml:
+<style name="WithoutTitle" parent="AppTheme">
+        <item name="android:windowNoTitle">true</item>
+</style>
+
+//horizontally center views inside a linear layout
+<LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"       
+        android:gravity="center_horizontal">
+</LinearLayout>	
+```
+
+#### Hide soft keyboard inside a viewpager fragment
+`((InputMethodManager)getSystemService(INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(mViewPager.getWindowToken(), 0);`
+
+#### Hide soft keyboard inside a  fragment
+`((InputMethodManager)getContext().getSystemService(getContext().INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(getView().getWindowToken(), 0);`
+
+
+#### Click listener on soft keyboard
+```
+mInputEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView textView, int actionId, KeyEvent keyEvent) {
+
+                if (actionId == EditorInfo.IME_ACTION_GO)
+                {
+                    mCallback.onKeyboardGoPressed();
+                }
+                return false;
+            }
+        });
+```
+
 #### To highlight, color or bold a substring in textview
 ```
 highlightColor = Color.rgb(54, 173, 72);
