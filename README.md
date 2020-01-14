@@ -11,6 +11,76 @@
 
 ## Code Snippets
 
+#### Stop default activity start animation
+```
+Intent intent = new Intent(SourceActivity.this, DestinationActivity.class);
+startActivity(intent);
+overridePendingTransition(0, 0);
+```
+#### Full screen activity theme
+```
+<activity
+            android:name=".SourceActivity"
+            android:theme="@style/AppThemeFullscreen">
+</activity>
+
+//inside values/styles.xml:
+<style name="AppThemeFullscreen" parent="android:Theme.Holo.NoActionBar.Fullscreen">
+        <!-- Customize your theme here. -->
+</style>
+```
+
+#### Parse arguments from activity bundle
+```
+Intent intent = getIntent();
+Bundle extras = intent.getExtras();
+if (extras != null)
+{
+int uiStep = extras.getInt(ARG_STEP, -1);
+}
+```
+
+#### Start activity with arguments
+```
+private static String ARG_STEP = "STEP";
+Intent intent = new Intent(SourceActivity.this, ImageActivity.class);
+private static int SCREEN3 = 2;
+intent.putExtra(ARG_STEP, SCREEN3);
+startActivity(intent);
+```
+
+#### Array of strings to arraylist
+```
+String[] mStrings = {“String1”, “String2”, “String3”};
+ArrayList<String> stringsList = new ArrayList<String>(Arrays.asList(mStrings));
+```
+
+#### Array of strings to list
+```
+String[] mStrings = {“String1”, “String2”, “String3”};
+Arrays.asList(mStrings);
+```
+
+#### To format a date from string
+```
+/*
+@param sourceString e.g. ”Fri, 04 Apr 2014 14:16:05 +0200”, "2014-09-04T15:51:46-0500"
+@param sourceFormat e.g. "EEE, dd MMM yyyy HH:mm:ss Z", "yyyy-MM-dd'T'HH:mm:ssZ"
+@param destinationFormat e.g. "MMM dd yyyy", "MM/dd/yyyy hh:mm:ss"
+*/
+public static String dateString(String sourceString, String sourceFormat, String destinationFormat)
+{
+        try {
+            Date sourceDate = new SimpleDateFormat(sourceFormat).parse(sourceString);
+            return new SimpleDateFormat(destinationFormat).format(sourceDate);
+        }
+        catch (ParseException pe)
+        {
+            return sourceString;
+        }
+}
+```
+
 #### Set a launcher activity in androidmanifest with no title
 ```
 <activity
@@ -435,6 +505,34 @@ Random rand = new Random();
 rand.nextInt(n); 
 ```
 
+### To get list of avds on host machine
+`android list avd`
+
+### To start emulator from command line
+`emulator -avd <avd_name>`
+
+#### To read file (css/js/html) as string
+```
+public static String getFileAsString(Context context, String filename)
+{
+	String fileString = "";
+	try
+	{
+		InputStream is = context.getResources().getAssets().open(filename);
+
+		int size = is.available();
+		byte[] buffer = new byte[size];
+		is.read(buffer);
+		is.close();
+		fileString = new String(buffer);
+	} catch (IOException ioe)
+	{
+		ioe.printStackTrace();
+	}
+	return fileString;
+}
+```
+
 ## Links
 - Time conversions (days, minutes, seconds, milliseconds): http://stackoverflow.com/a/24285615/550393
 - Color transparency: https://stackoverflow.com/a/17239853
@@ -442,3 +540,12 @@ rand.nextInt(n);
 - Difference between gravity and layout_gravity: http://stackoverflow.com/a/3482757
 - Set height or width of a view: http://stackoverflow.com/a/5042278/550393
 - Showing soft keyboard: http://stackoverflow.com/a/8080621/550393, http://stackoverflow.com/a/18237942
+- Pass arguments to fragment: http://stackoverflow.com/a/17063584
+- Enum int string conversion: http://stackoverflow.com/a/5021384/550393
+- Declaring enums: http://stackoverflow.com/a/9246954
+- Density calculator: http://density.brdrck.me/
+- Command line tools: http://developer.android.com/tools/help/index.html, http://developer.android.com/tools/devices/emulator.html
+- For reading jar files (JD-GUI): http://jd.benow.ca/
+- To convert apk to jar: https://code.google.com/p/dex2jar/wiki/UserGuide
+
+
