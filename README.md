@@ -505,10 +505,10 @@ Random rand = new Random();
 rand.nextInt(n); 
 ```
 
-### To get list of avds on host machine
+#### To get list of avds on host machine
 `android list avd`
 
-### To start emulator from command line
+#### To start emulator from command line
 `emulator -avd <avd_name>`
 
 #### To read file (css/js/html) as string
