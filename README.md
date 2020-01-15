@@ -8,6 +8,7 @@
 - **CustomView** - Simple XML based custom view with styleable attributes written in Kotlin
 - **ContactManager** - Demo of Room integration written in Java
 - **ContactManagerRx** - Demo of Room integration using RxJava written in Java
+- **ContactManagerMVVM** - Demo of MVVM with Room written in Java
 
 ## Code Snippets
 
@@ -531,6 +532,143 @@ public static String getFileAsString(Context context, String filename)
 	}
 	return fileString;
 }
+```
+
+#### Spinner on action bar navigation using custom arrayadapter
+```
+//class has to implements ActionBar.OnNavigationListener and @Override public boolean onNavigationItemSelected(int itemPosition, long itemId)
+protected void onCreate(Bundle savedInstanceState)
+    {
+
+        NavSpinnerAdapter adapter = new NavSpinnerAdapter(this);
+
+        getActionBar().setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
+        getActionBar().setListNavigationCallbacks(adapter, this);
+        getActionBar().setSelectedNavigationItem(0);
+        getActionBar().setTitle("");
+    }
+
+//inside a resource navigation.xml:
+<string-array name="navigation_titles">
+        <item>Item 1</item>
+        <item>Item 2</item>
+        <item>Item 3</item>
+        <item>Item 4</item>
+        <item>Item 5</item>
+    </string-array>
+
+    <string-array name="navigation_images">
+        <item>@android:drawable/ic_menu_save</item>
+        <item>@android:drawable/ic_menu_agenda</item>
+        <item>@android:drawable/ic_menu_add</item>
+        <item>@android:drawable/ic_menu_call</item>
+        <item>@android:drawable/ic_menu_camera</item>
+    </string-array>
+
+
+private class NavSpinnerAdapter extends ArrayAdapter<NavigationItem>
+    {
+        public NavSpinnerAdapter(Context context)
+        {
+            super(context, android.R.layout.simple_spinner_item);
+
+            String[] titles = context.getResources().getStringArray(R.array.navigation_titles);
+            TypedArray images = context.getResources().obtainTypedArray(R.array.navigation_images);
+
+            for (int index = 0; index < titles.length; index++)
+                add(new NavigationItem(titles[index], images.getDrawable(index)));
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            TextView text = (TextView) super.getView(position, convertView, parent);
+            text.setText(getItem(position).title);
+            return text;
+        }
+
+        @Override
+        public View getDropDownView(int position, View convertView, ViewGroup parent)
+        {
+            if (convertView == null)
+                convertView = View.inflate(getContext(), R.layout.navigation_item, null);
+
+            ImageView iv = (ImageView) convertView.findViewById(R.id.navigationItemImage);
+            TextView tv = (TextView) convertView.findViewById(R.id.navigationItemText);
+
+            iv.setImageDrawable(getItem(position).image);
+            tv.setText(getItem(position).title);
+
+            return convertView;
+        }
+    }
+
+    public static class NavigationItem
+    {
+        public String title;
+        public Drawable image;
+
+        public NavigationItem(String title, Drawable image)
+        {
+            this.title = title;
+            this.image = image;
+        }
+    }
+```
+
+#### Spinner on action bar navigation using arrayadapter
+```
+ArrayList<String> spinnerItems = new ArrayList<String>();
+SpinnerAdapter spinnerAdapter = new ArrayAdapter(mContext, R.layout.news_spinner_dropdown_item, R.id.news_spinner_dropdown_item_text, spinnerItems);
+getActivity().getActionBar().setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
+getActivity().getActionBar().setListNavigationCallbacks(spinnerAdapter, this);
+getActivity().getActionBar().setSelectedNavigationItem(1);
+```
+	
+#### Horizontal progress bar on top
+```
+<ProgressBar
+        style="@android:style/Widget.Holo.Light.ProgressBar.Horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:indeterminateOnly="true"
+        android:visibility="visible"
+        android:layout_gravity="top" />
+```
+
+#### Options menu in fragment (programmatically)
+```
+//set setHasOptionsMenu(true); in onCreateView
+public void onCreateOptionsMenu (Menu menu, MenuInflater inflater)
+{
+       menu.add(0, R.id.menu_news_global, 0, R.string.global);
+       menu.add(0, R.id.menu_news_rnam, 0, empUnit.name);
+       super.onCreateOptionsMenu(menu,inflater);
+}
+
+@Override
+public boolean onOptionsItemSelected(MenuItem item)
+{
+       if (item.getItemId() == R.id.menu_news_global)
+       {            
+            return true;
+       }
+       else if (item.getItemId() == R.id.menu_news_rnam)
+       {           
+            return true;
+       }
+       return false;
+}
+```
+
+#### Helper method for TAG
+```
+private final String TAG = Util.tag(getClass().getSimpleName());
+
+//Util.java:
+public static String tag(String tag)
+{
+        return "PREFIX_" + tag;
 ```
 
 ## Links
