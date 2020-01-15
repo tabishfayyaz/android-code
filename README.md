@@ -392,6 +392,14 @@ mTabTitles = getResources().obtainTypedArray(R.array.support_tabs);
 </shape>
 ```
 
+#### Add custom font
+![imageview customfont](https://github.com/tabishfayyaz/android-code/raw/master/images/customfont.png)
+```
+Typeface tf = Typeface.createFromAsset(getResources().getAssets(), "idolwild.ttf");
+EditText mInputEditText = (EditText)findViewById(R.id.view_paper_edittext);
+mInputEditText.setTypeface(tf);
+```
+
 #### ImageView Scaletype
 ![imageview scaletype](https://github.com/tabishfayyaz/android-code/raw/master/images/scaletype.png)
 
