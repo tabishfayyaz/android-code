@@ -7,8 +7,225 @@
 - **UnitTestingAndroidCourse** - Fundamentals of JUnit, Mockito and Android JUnit testing written in Java
 - **CustomView** - Simple XML based custom view with styleable attributes written in Kotlin
 - **ContactManager** - Demo of Room integration written in Java
+- **ContactManagerRx** - Demo of Room integration using RxJava written in Java
 
 ## Code Snippets
+
+#### Stop default activity start animation
+```
+Intent intent = new Intent(SourceActivity.this, DestinationActivity.class);
+startActivity(intent);
+overridePendingTransition(0, 0);
+```
+#### Full screen activity theme
+```
+<activity
+            android:name=".SourceActivity"
+            android:theme="@style/AppThemeFullscreen">
+</activity>
+
+//inside values/styles.xml:
+<style name="AppThemeFullscreen" parent="android:Theme.Holo.NoActionBar.Fullscreen">
+        <!-- Customize your theme here. -->
+</style>
+```
+
+#### Parse arguments from activity bundle
+```
+Intent intent = getIntent();
+Bundle extras = intent.getExtras();
+if (extras != null)
+{
+int uiStep = extras.getInt(ARG_STEP, -1);
+}
+```
+
+#### Start activity with arguments
+```
+private static String ARG_STEP = "STEP";
+Intent intent = new Intent(SourceActivity.this, ImageActivity.class);
+private static int SCREEN3 = 2;
+intent.putExtra(ARG_STEP, SCREEN3);
+startActivity(intent);
+```
+
+#### Array of strings to arraylist
+```
+String[] mStrings = {“String1”, “String2”, “String3”};
+ArrayList<String> stringsList = new ArrayList<String>(Arrays.asList(mStrings));
+```
+
+#### Array of strings to list
+```
+String[] mStrings = {“String1”, “String2”, “String3”};
+Arrays.asList(mStrings);
+```
+
+#### To format a date from string
+```
+/*
+@param sourceString e.g. ”Fri, 04 Apr 2014 14:16:05 +0200”, "2014-09-04T15:51:46-0500"
+@param sourceFormat e.g. "EEE, dd MMM yyyy HH:mm:ss Z", "yyyy-MM-dd'T'HH:mm:ssZ"
+@param destinationFormat e.g. "MMM dd yyyy", "MM/dd/yyyy hh:mm:ss"
+*/
+public static String dateString(String sourceString, String sourceFormat, String destinationFormat)
+{
+        try {
+            Date sourceDate = new SimpleDateFormat(sourceFormat).parse(sourceString);
+            return new SimpleDateFormat(destinationFormat).format(sourceDate);
+        }
+        catch (ParseException pe)
+        {
+            return sourceString;
+        }
+}
+```
+
+#### Set a launcher activity in androidmanifest with no title
+```
+<activity
+            android:name="co.tabish.fayyaz.swipedeletelistviewdemo.app.MainActivity"
+            android:label="@string/title_activity_main"
+            android:theme="@style/WithoutTitle">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+</activity>
+
+//inside values/style.xml:
+<style name="WithoutTitle" parent="AppTheme">
+        <item name="android:windowNoTitle">true</item>
+</style>
+
+//horizontally center views inside a linear layout
+<LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"       
+        android:gravity="center_horizontal">
+</LinearLayout>	
+```
+
+#### Hide soft keyboard inside a viewpager fragment
+`((InputMethodManager)getSystemService(INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(mViewPager.getWindowToken(), 0);`
+
+#### Hide soft keyboard inside a  fragment
+`((InputMethodManager)getContext().getSystemService(getContext().INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(getView().getWindowToken(), 0);`
+
+
+#### Click listener on soft keyboard
+```
+mInputEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView textView, int actionId, KeyEvent keyEvent) {
+
+                if (actionId == EditorInfo.IME_ACTION_GO)
+                {
+                    mCallback.onKeyboardGoPressed();
+                }
+                return false;
+            }
+        });
+```
+
+#### To highlight, color or bold a substring in textview
+```
+highlightColor = Color.rgb(54, 173, 72);
+SpannableString spannedString = new SpannableString(“This is a demo string”);
+spannedString.setSpan(new BackgroundColorSpan(highlightColor), startIndex, startIndex+lookupText.length(), 0);
+spannedString.setSpan(new ForegroundColorSpan(Color.WHITE), startIndex, startIndex+lookupText.length(), 0);
+spannedString.setSpan(new StyleSpan(android.graphics.Typeface.BOLD), startIndex, startIndex+lookupText.length(), 0);
+textView.setText(spannedString);
+```
+
+#### Send broadcast
+```
+Intent intent = new Intent(appContext, SessionStateReceiver.class);
+intent.setAction(“SESSION_BROADCAST_ACTION”);
+intent.putExtra(“MESSAGE”, SESSION_EXPIRED_MESSAGE);
+context.sendBroadcast(intent);
+
+Bundle extras = intent.getExtras();
+String message = (String)extras.get(“MESSAGE”);
+```
+
+#### If ListView item click listener does not work after adding button
+```
+<Button  
+android:id="@+id/list_item_button3"                       
+            	android:onClick="onButtonClick"
+            	android:focusable="false"
+android:focusableInTouchMode="false"
+/>
+```
+
+#### To see performance of a listview by printing its frames per second
+```
+/**
+ * A utility custom list view that print frames per second while scrolling. The ideal frame rate should be 60 if its being shown too less 
+ * then something is not right in the UI 
+ */
+public class FPSListView extends ListView
+{
+	private Toast fpsToast;b
+	private long currentTime;
+	private long prevTime;
+
+	public FPSListView(Context context)
+	{
+		super(context);
+		fpsToast = Toast.makeText(context, "", Toast.LENGTH_SHORT);
+	}
+
+	public FPSListView(Context context, AttributeSet attrs)
+	{
+		super(context, attrs);
+		fpsToast = Toast.makeText(context, "", Toast.LENGTH_SHORT);
+	}
+
+	@Override
+	protected void onDraw(Canvas canvas)
+	{
+		super.onDraw(canvas);
+
+		currentTime = SystemClock.currentThreadTimeMillis();
+		long deltaTime = currentTime - prevTime;
+		long fps = 1000 / deltaTime;
+		fpsToast.setText("FPS: " + fps);
+		fpsToast.show();
+		prevTime = currentTime;
+	}
+}
+```
+
+#### Specify white color with alpha
+`<color name="white_with_transparency">#80ffffff</color>`
+
+#### Set html text
+```
+stepBText.setText(Html.fromHtml("Waiting...<br>Handshaking with the server"));
+
+OR
+
+<string name="allow_location_access">Allow &lt;b&gt;Cat Widget&lt;/b&gt; to access this device\'s location?</string>
+allowLocationText.setText(Html.fromHtml(getString(R.string.allow_location_access)));
+```
+
+#### Open external app if installed on device otherwise open from play store
+```
+@param packageName e.g. com.concur.breeze (can be seen in an app play-store url)
+private void launchApp(String packageName)
+{
+        Intent launchIntent = getPackageManager().getLaunchIntentForPackage(packageName);
+        if (launchIntent != null) {
+            startActivity(launchIntent);
+        }
+        else
+        {
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse( "http://play.google.com/store/apps/details?id=" + packageName)));
+        }
+}
+```
 
 #### Prevent touch theft by parent from child view
 ```
@@ -288,6 +505,34 @@ Random rand = new Random();
 rand.nextInt(n); 
 ```
 
+#### To get list of avds on host machine
+`android list avd`
+
+#### To start emulator from command line
+`emulator -avd <avd_name>`
+
+#### To read file (css/js/html) as string
+```
+public static String getFileAsString(Context context, String filename)
+{
+	String fileString = "";
+	try
+	{
+		InputStream is = context.getResources().getAssets().open(filename);
+
+		int size = is.available();
+		byte[] buffer = new byte[size];
+		is.read(buffer);
+		is.close();
+		fileString = new String(buffer);
+	} catch (IOException ioe)
+	{
+		ioe.printStackTrace();
+	}
+	return fileString;
+}
+```
+
 ## Links
 - Time conversions (days, minutes, seconds, milliseconds): http://stackoverflow.com/a/24285615/550393
 - Color transparency: https://stackoverflow.com/a/17239853
@@ -295,3 +540,12 @@ rand.nextInt(n);
 - Difference between gravity and layout_gravity: http://stackoverflow.com/a/3482757
 - Set height or width of a view: http://stackoverflow.com/a/5042278/550393
 - Showing soft keyboard: http://stackoverflow.com/a/8080621/550393, http://stackoverflow.com/a/18237942
+- Pass arguments to fragment: http://stackoverflow.com/a/17063584
+- Enum int string conversion: http://stackoverflow.com/a/5021384/550393
+- Declaring enums: http://stackoverflow.com/a/9246954
+- Density calculator: http://density.brdrck.me/
+- Command line tools: http://developer.android.com/tools/help/index.html, http://developer.android.com/tools/devices/emulator.html
+- For reading jar files (JD-GUI): http://jd.benow.ca/
+- To convert apk to jar: https://code.google.com/p/dex2jar/wiki/UserGuide
+
+
