@@ -695,3 +695,4 @@ public static String tag(String tag)
 - To convert apk to jar: https://code.google.com/p/dex2jar/wiki/UserGuide
 - Service vs. IntentService: http://stackoverflow.com/a/15772151/550393
 - Content Provider vs SQLite: http://stackoverflow.com/a/13586952/550393, http://stackoverflow.com/a/4245672/550393
+- Call method after delay using RxJava: https://stackoverflow.com/a/42127071
