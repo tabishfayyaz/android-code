@@ -9,6 +9,7 @@
 - **ContactManager** - Demo of Room integration written in Java
 - **ContactManagerRx** - Demo of Room integration using RxJava written in Java
 - **ContactManagerMVVM** - Demo of MVVM with Room written in Java
+- **TMDBClientMVVM** - Simple Popular Movies Display Grid using Retrofit, RxJava and MVVM written in Kotlin
 
 ## Code Snippets
 
