@@ -392,6 +392,14 @@ mTabTitles = getResources().obtainTypedArray(R.array.support_tabs);
 </shape>
 ```
 
+#### Add custom font
+![imageview customfont](https://github.com/tabishfayyaz/android-code/raw/master/images/customfont.png)
+```
+Typeface tf = Typeface.createFromAsset(getResources().getAssets(), "idolwild.ttf");
+EditText mInputEditText = (EditText)findViewById(R.id.view_paper_edittext);
+mInputEditText.setTypeface(tf);
+```
+
 #### ImageView Scaletype
 ![imageview scaletype](https://github.com/tabishfayyaz/android-code/raw/master/images/scaletype.png)
 
@@ -685,5 +693,6 @@ public static String tag(String tag)
 - Command line tools: http://developer.android.com/tools/help/index.html, http://developer.android.com/tools/devices/emulator.html
 - For reading jar files (JD-GUI): http://jd.benow.ca/
 - To convert apk to jar: https://code.google.com/p/dex2jar/wiki/UserGuide
-
-
+- Service vs. IntentService: http://stackoverflow.com/a/15772151/550393
+- Content Provider vs SQLite: http://stackoverflow.com/a/13586952/550393, http://stackoverflow.com/a/4245672/550393
+- Call method after delay using RxJava: https://stackoverflow.com/a/42127071
