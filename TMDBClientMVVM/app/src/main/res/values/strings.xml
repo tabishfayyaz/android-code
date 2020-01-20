@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">TMDBClientMVVM</string>
+    <string name="title_activity_movie">MovieActivity</string>
+
+<!--    //be nice and get your own API KEY: https://www.themoviedb.org-->
+    <string name="api_key">6679d5ba4788175ba3e643fe6fa15b55</string>
+</resources>
