@@ -3,7 +3,9 @@ package com.androidtutz.anushka.didemo;
 import android.util.Log;
 
 import javax.inject.Inject;
+import javax.inject.Singleton;
 
+@Singleton
 public class SmartPhone {
 
     private Battery battery;
@@ -16,10 +18,12 @@ public class SmartPhone {
         this.battery = battery;
         this.memoryCard = memoryCard;
         this.simCard = simCard;
+
+        battery.showType();
     }
 
 
-    public void makeACall(){
+    public void makeACall() {
         Log.d(TAG, " making a call......... ");
     }
 }
