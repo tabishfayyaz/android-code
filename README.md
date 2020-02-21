@@ -11,7 +11,7 @@
 - **ContactManagerMVVM** - Demo of MVVM with Room written in Java
 - **TMDBClientMVVM** - Simple Popular Movies Display Grid using Retrofit, RxJava and MVVM written in Kotlin
 - **DIDemo1** - Introduction to Dagger using Component, Module, Singleton, Interfaces written in Java
-- **Countriesapp** - Displays list of Countries & their flags using MVVM, RxJava, RetroFit, Dagger & Unit Testing written in Kotlin
+- **Countriesapp** - Display list of Countries & their flags using MVVM, RxJava, RetroFit, Dagger & Unit Testing written in Kotlin
 
 ## Code Snippets
 
