@@ -699,3 +699,4 @@ public static String tag(String tag)
 - Service vs. IntentService: http://stackoverflow.com/a/15772151/550393
 - Content Provider vs SQLite: http://stackoverflow.com/a/13586952/550393, http://stackoverflow.com/a/4245672/550393
 - Call method after delay using RxJava: https://stackoverflow.com/a/42127071
+- Fun with Constraint Layouts https://medium.com/@nickand/fun-with-constraints-layout-8d4ea83166db
