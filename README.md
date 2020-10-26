@@ -683,6 +683,36 @@ public static String tag(String tag)
 }
 ```
 
+#### filter logcat by TAG
+```
+adb logcat -s TAG
+```
+
+---
+
+**_compileSdkVersion_** - version of the API the app is compiled against
+
+**_targetSdkVersion_** - not related to how your app is compiled or what APIs you can utilize but to indicate (upto & including) the version you have tested against
+
+**_minSdkVersion_** - earliest version of Android that the app can run on
+
+**ideally:** `minSdkVersion (lowest possible) <= targetSdkVersion == compileSdkVersion (latest SDK)`
+
+
+`apply plugin: kotlin-kapt` to add annotation processors (see JSR 269) support in Kotlin then libraries such as Dagger can be used however the dependency has to be added using `kapt` configuration, (_kapt_: kotlin annotations processing tool)
+
+`apply plugin: kotlin-android-extensions` to add support for view binding with Kotlin Android Extensions
+
+`classpath 'com.android.tools.build:gradle:3.4.2'` Android Studio Gradle Plugin that provides integration of Gradle into Android Studio. The version will match the version of Android Studio being used
+
+`distributionUrl=https\://services.gradle.org/distributions/gradle-5.1.1-all.zip` in _gradle-wrapper.properties_ which specifies the version of Gradle being used
+
+- *Accelerometer*: for horizontal and lateral movements
+- *Gyro*: for rotational speeds
+- *Compass*: which way is north
+- *Barometer*: for elevation
+
+
 ## Links
 - Time conversions (days, minutes, seconds, milliseconds): http://stackoverflow.com/a/24285615/550393
 - Color transparency: https://stackoverflow.com/a/17239853
@@ -702,3 +732,17 @@ public static String tag(String tag)
 - Call method after delay using RxJava: https://stackoverflow.com/a/42127071
 - Fun with Constraint Layouts https://medium.com/@nickand/fun-with-constraints-layout-8d4ea83166db
 - Building interfaces with ConstraintLayout https://medium.com/androiddevelopers/building-interfaces-with-constraintlayout-3958fa38a9f7
+- Google’s Maven Repository: https://maven.google.com/web/index.html
+- MVN Repository: https://mvnrepository.com/
+- RxJava: https://github.com/ReactiveX/Rxjava
+- RxJava Docs: http://reactivex.io/RxJava/javadoc/io/reactivex/package-summary.html
+- RxAndroid: https://github.com/ReactiveX/RxAndroid
+- Android Tutorials by MindOrks https://mindorks.com/android-tutorial
+- CodePath Android Guide https://guides.codepath.com/android
+- Dagger: https://github.com/google/dagger
+- Gradle search: https://gradleplease.appspot.com/
+- Simple Date Format: https://developer.android.com/reference/java/text/SimpleDateFormat.html
+- Formatter: https://developer.android.com/reference/java/util/Formatter.html
+- API Distribution Stats: https://developer.android.com/about/dashboards/index.html
+- Java to Kotlin Cheatsheet: https://github.com/MindorksOpenSource/from-java-to-kotlin
+
