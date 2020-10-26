@@ -683,12 +683,10 @@ public static String tag(String tag)
 }
 ```
 
-#### filter logcat by TAG
-```
-adb logcat -s TAG
-```
 
----
+## Notes
+
+**_filter logcat by TAG:_** `adb logcat -s TAG`
 
 **_compileSdkVersion_** - version of the API the app is compiled against
 
