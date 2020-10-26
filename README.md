@@ -680,6 +680,7 @@ private final String TAG = Util.tag(getClass().getSimpleName());
 public static String tag(String tag)
 {
         return "PREFIX_" + tag;
+}
 ```
 
 ## Links
