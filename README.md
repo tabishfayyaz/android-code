@@ -44,6 +44,13 @@ int uiStep = extras.getInt(ARG_STEP, -1);
 }
 ```
 
+#### Log key-values in a bundle
+```
+for (String key : extras.keySet()) { 
+	Log.d(TAG, key + ": " + extras.get(key)); 
+}
+```
+
 #### Start activity with arguments
 ```
 private static String ARG_STEP = "STEP";
