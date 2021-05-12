@@ -797,6 +797,7 @@ public static String tag(String tag)
 ## Links
 - Time conversions (days, minutes, seconds, milliseconds): http://stackoverflow.com/a/24285615/550393
 - Color transparency: https://stackoverflow.com/a/17239853
+- Callbacks in Kotlin: https://stackoverflow.com/a/53121003
 - Format a number to add comma at thousand position: http://stackoverflow.com/a/5323787
 - Difference between gravity and layout_gravity: http://stackoverflow.com/a/3482757
 - Set height or width of a view: http://stackoverflow.com/a/5042278/550393
